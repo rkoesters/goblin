@@ -1,9 +1,9 @@
 package main
 
 import (
-	"path"
 	"flag"
 	"fmt"
+	"path"
 )
 
 var pwd = flag.String("d", "", "prefix")
