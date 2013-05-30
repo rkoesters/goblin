@@ -13,6 +13,10 @@ var (
 )
 
 func main() {
+	lib.Usage = "[-p] [-m mode] dirname..."
+	lib.InitFlag()
+	lib.InitLog()
+
 	flag.Parse()
 
 	perm, err := lib.ParsePerm(*mode)

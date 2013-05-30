@@ -2,12 +2,14 @@ package main
 
 import (
 	"fmt"
-	_ "github.com/rkoesters/goblin/lib"
+	"github.com/rkoesters/goblin/lib"
 	"log"
 	"os"
 )
 
 func main() {
+	lib.InitLog()
+
 	status := 0
 	for i := 1; i < len(os.Args); i++ {
 		fi, err := os.Stat(os.Args[i])

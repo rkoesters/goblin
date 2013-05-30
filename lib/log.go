@@ -1,11 +1,8 @@
 package lib
 
-import (
-	"log"
-	"os"
-)
+import "log"
 
-func init() {
+func InitLog() {
 	log.SetFlags(0)
-	log.SetPrefix(os.Args[0] + ": ")
+	log.SetPrefix(argv0 + ": ")
 }

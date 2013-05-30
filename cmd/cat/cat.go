@@ -1,13 +1,15 @@
 package main
 
 import (
-	_ "github.com/rkoesters/goblin/lib"
+	"github.com/rkoesters/goblin/lib"
 	"io"
 	"log"
 	"os"
 )
 
 func main() {
+	lib.InitLog()
+
 	if len(os.Args) < 2 {
 		cat(os.Stdin)
 		return

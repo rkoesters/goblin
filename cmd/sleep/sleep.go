@@ -1,7 +1,7 @@
 package main
 
 import (
-	_ "github.com/rkoesters/goblin/lib"
+	"github.com/rkoesters/goblin/lib"
 	"log"
 	"os"
 	"strconv"
@@ -9,6 +9,8 @@ import (
 )
 
 func main() {
+	lib.InitLog()
+
 	if len(os.Args) < 2 {
 		return
 	}
