@@ -1,8 +1,12 @@
-all: cmds
+bindir = bin
 
-cmds:
-	GOBIN=bin go install ./cmd/...
-	cp sh/* bin
+all: cmds-go cmds-sh
+
+cmds-go:
+	GOBIN=$(bindir) go install ./cmd/...
+
+cmds-sh:
+	cp sh/* $(bindir)
 
 clean:
-	rm -f bin/*
+	rm -f $(bindir)/*
