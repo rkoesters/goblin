@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"github.com/rkoesters/goblin/lib"
 	"log"
-	"os"
 	"sort"
 )
 
@@ -22,7 +21,11 @@ func main() {
 	flag.Parse()
 
 	// Read in our input.
-	buf := Read()
+	names := flag.Args()
+	if len(names) == 0 {
+		names = append(names, "/dev/stdin")
+	}
+	buf := Read(names)
 
 	// Time to sort.
 	Sort(buf)
@@ -31,11 +34,24 @@ func main() {
 	Print(buf)
 }
 
-func Read() []string {
-	if flag.NArg() == 0 {
-		return readFile("/dev/stdin")
+func Read(names []string) []string {
+	// Create a single stream consisting of all the files.
+	buf := make([]string, 0)
+	rd, err := lib.MultiFile(names...)
+	if err != nil {
+		log.Fatal(err)
 	}
-	return readFiles(flag.Args())
+	defer rd.Close()
+
+	// Read that stream into a slice of strings.
+	sc := bufio.NewScanner(rd)
+	for sc.Scan() {
+		buf = append(buf, sc.Text())
+	}
+	if sc.Err() != nil {
+		log.Fatal(err)
+	}
+	return buf
 }
 
 func Sort(buf []string) {
@@ -54,36 +70,4 @@ func Print(buf []string) {
 		}
 		prev = i
 	}
-}
-
-// Reads each file into a single slice of strings.
-func readFiles(names []string) []string {
-	buf := make([]string, 0)
-
-	for _, i := range flag.Args() {
-		buf = append(buf, readFile(i)...)
-	}
-	return buf
-}
-
-// Reads the file `name' into a slice of strings.
-func readFile(name string) []string {
-	buf := make([]string, 0)
-
-	f, err := os.Open(name)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer f.Close()
-
-	// Read the file line by line.
-	sc := bufio.NewScanner(f)
-	for sc.Scan() {
-		buf = append(buf, sc.Text())
-	}
-	err = sc.Err()
-	if err != nil {
-		log.Fatal(err)
-	}
-	return buf
 }
