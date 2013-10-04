@@ -25,7 +25,6 @@ sam
 sha1sum
 sed
 seq
-sort
 split
 strings
 tail
