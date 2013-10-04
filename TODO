@@ -28,7 +28,6 @@ seq
 split
 strings
 tail
-tee
 test
 touch
 tr
