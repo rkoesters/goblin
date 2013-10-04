@@ -12,7 +12,6 @@ var pwd = flag.String("d", "", "prefix")
 func main() {
 	lib.Usage = "[-d pwd] names..."
 	lib.InitFlag()
-
 	flag.Parse()
 
 	for _, i := range flag.Args() {

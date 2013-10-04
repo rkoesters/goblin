@@ -16,7 +16,6 @@ func main() {
 	lib.Usage = "[-f] [-r] file..."
 	lib.InitFlag()
 	lib.InitLog()
-
 	flag.Parse()
 
 	var rm func(string) error
