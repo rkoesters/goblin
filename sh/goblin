@@ -1,0 +1,12 @@
+#!/bin/sh
+GOBLIN=${GOBLIN:-$GOPATH/src/github.com/rkoesters/goblin}
+export GOBLIN
+
+PATH=$GOBLIN/bin:$PATH
+export PATH
+
+case $# in
+	[1-9]*)
+		exec "$@"
+		;;
+esac
