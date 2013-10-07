@@ -1,17 +1,17 @@
 #!/bin/sh
-if [ $# != 4 ]
-then
-	echo "usage: $0 mango docdir manual version" >/dev/stderr
-	exit 1
-fi
+mango=${mango:-mango-doc}
+manual=${manual:-GOBLIN}
 
-mango="$1"
-docdir="$2"
-manual="$3"
-version="$4"
+mkman ()
+{
+	section="$1"
+	path="$2"
+	base="`basename $path`"
+	manpage="man/man$section/$base.$section"
+	$mango -name "$base" -manual "$manual" "$path" >"$manpage"
+}
 
 for i in cmd/*
 do
-	cmdname="`basename $i`"
-	$mango -name "$cmdname" -manual "$manual" -version "$version" "$i" >"$docdir/$cmdname.1"
+	mkman 1 "$i"
 done

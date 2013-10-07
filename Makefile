@@ -1,9 +1,5 @@
 bindir = bin
-docdir = man
-
-mango   = mango-doc
-manual  = GOBLIN
-version = 1
+mandir = man
 
 all: cmds-go cmds-sh cmds-doc
 
@@ -13,15 +9,15 @@ cmds-go: $(bindir)
 cmds-sh: $(bindir)
 	cp sh/* $(bindir)
 
-cmds-doc: $(docdir)
-	tools/mkdoc.sh $(mango) $(docdir) $(manual) $(version)
+cmds-doc: $(mandir)
+	tools/mkdoc.sh
 
 $(bindir):
-	mkdir $(bindir)
+	mkdir -p $(bindir)
 
-$(docdir):
-	mkdir $(docdir)
+$(mandir):
+	mkdir -p $(mandir)
 
 clean:
 	rm -f $(bindir)/*
-	rm -f $(docdir)/*
+	rm -f $(mandir)/*/*
