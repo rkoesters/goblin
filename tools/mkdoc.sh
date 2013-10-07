@@ -6,9 +6,9 @@ mkman ()
 {
 	section="$1"
 	path="$2"
-	base="`basename $path`"
-	manpage="man/man$section/$base.$section"
-	$mango -name "$base" -manual "$manual" "$path" >"$manpage"
+	name="`basename $path`"
+	manpage="man/man$section/$name.$section"
+	$mango -name "$name" -manual "$manual" "$path" >"$manpage"
 }
 
 for i in cmd/*
