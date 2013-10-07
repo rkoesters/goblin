@@ -1,3 +1,4 @@
+// Create directories.
 package main
 
 import (
@@ -12,6 +13,7 @@ var (
 	mode  = flag.String("m", "0777", "permissions for creating directory")
 )
 
+// Usage: %name %flags dirname...
 func main() {
 	lib.Usage = "[-p] [-m mode] dirname..."
 	lib.InitFlag()
