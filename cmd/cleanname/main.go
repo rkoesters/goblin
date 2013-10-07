@@ -10,7 +10,7 @@ import (
 var pwd = flag.String("d", "", "prefix")
 
 func main() {
-	lib.Usage = "[-d pwd] names..."
+	lib.Usage = "names..."
 	lib.InitFlag()
 	flag.Parse()
 

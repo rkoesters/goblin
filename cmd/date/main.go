@@ -15,7 +15,7 @@ var (
 )
 
 func main() {
-	lib.Usage = "[-u] [-n] [seconds]"
+	lib.Usage = "[seconds]"
 	lib.InitLog()
 	lib.InitFlag()
 	flag.Parse()

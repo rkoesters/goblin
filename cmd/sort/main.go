@@ -20,7 +20,7 @@ var (
 
 // Usage: %name %flags [file...]
 func main() {
-	lib.Usage = "[-r] [-u] [file...]"
+	lib.Usage = "[file...]"
 	lib.InitFlag()
 	lib.InitLog()
 	flag.Parse()

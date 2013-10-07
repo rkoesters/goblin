@@ -14,7 +14,7 @@ var (
 )
 
 func main() {
-	lib.Usage = "[-m] [-n lines] [file...]"
+	lib.Usage = "[file...]"
 	lib.InitLog()
 	lib.InitFlag()
 	flag.Parse()

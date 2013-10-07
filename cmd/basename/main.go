@@ -12,7 +12,7 @@ import (
 var dflag = flag.Bool("d", false, "print directory compenent")
 
 func main() {
-	lib.Usage = "[-d] string [suffix]"
+	lib.Usage = "string [suffix]"
 	lib.InitFlag()
 	flag.Parse()
 

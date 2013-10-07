@@ -14,7 +14,7 @@ var noNL = flag.Bool("n", false, "suppress newline")
 
 // Usage: %name %flags [arg...]
 func main() {
-	lib.Usage = "[-n] [arg...]"
+	lib.Usage = "[arg...]"
 	lib.InitFlag()
 	flag.Parse()
 

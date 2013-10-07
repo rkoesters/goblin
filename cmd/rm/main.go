@@ -13,7 +13,7 @@ var (
 )
 
 func main() {
-	lib.Usage = "[-f] [-r] file..."
+	lib.Usage = "file..."
 	lib.InitFlag()
 	lib.InitLog()
 	flag.Parse()

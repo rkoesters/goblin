@@ -15,7 +15,7 @@ var (
 
 // Usage: %name %flags dirname...
 func main() {
-	lib.Usage = "[-p] [-m mode] dirname..."
+	lib.Usage = "dirname..."
 	lib.InitFlag()
 	lib.InitLog()
 	flag.Parse()
