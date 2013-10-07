@@ -1,3 +1,7 @@
+// Concatenate files.
+//
+// cat reads each file in order and writes to stdout. If no file is
+// given, then cat reads from stdin.
 package main
 
 import (
@@ -7,6 +11,7 @@ import (
 	"os"
 )
 
+// Usage: %name %flags [file...]
 func main() {
 	lib.InitLog()
 
