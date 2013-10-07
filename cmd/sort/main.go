@@ -1,3 +1,7 @@
+// Sort lines.
+//
+// sort sorts the lines of files and prints the result to stdout. If no
+// input files are given, then sort reads from stdin.
 package main
 
 import (
@@ -14,6 +18,7 @@ var (
 	noduplicates = flag.Bool("u", false, "Suppress printing duplicate lines.")
 )
 
+// Usage: %name %flags [file...]
 func main() {
 	lib.Usage = "[-r] [-u] [file...]"
 	lib.InitFlag()
