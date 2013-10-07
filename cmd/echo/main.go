@@ -1,3 +1,6 @@
+// Print arguments
+//
+// echo writes its arguments to stdout, followed by a newline.
 package main
 
 import (
@@ -9,6 +12,7 @@ import (
 
 var noNL = flag.Bool("n", false, "suppress newline")
 
+// Usage: %name %flags [arg...]
 func main() {
 	lib.Usage = "[-n] [arg...]"
 	lib.InitFlag()
