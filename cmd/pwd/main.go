@@ -1,3 +1,4 @@
+// Print current working directory.
 package main
 
 import (
