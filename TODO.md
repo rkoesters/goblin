@@ -1,5 +1,8 @@
-Tools
------
+TODO
+====
+
+New Tools
+---------
 
 - ascii
 - bc
@@ -39,5 +42,4 @@ Tools
 Other
 -----
 
-- Use [mango](http://code.google.com/p/mango-doc) to generate man pages.
-
+- Use [mango-doc](http://code.google.com/p/mango-doc) to generate man pages.
