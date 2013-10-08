@@ -5,7 +5,7 @@
 package main
 
 import (
-	"github.com/rkoesters/goblin/lib"
+	_ "github.com/rkoesters/goblin/lib/logutil"
 	"io"
 	"log"
 	"os"
@@ -13,8 +13,6 @@ import (
 
 // Usage: %name %flags [file...]
 func main() {
-	lib.InitLog()
-
 	if len(os.Args) < 2 {
 		cat(os.Stdin)
 		return

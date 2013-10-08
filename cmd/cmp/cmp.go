@@ -1,10 +1,12 @@
 // Compare files.
 package main
 
-import ( "bufio"
+import (
+	"bufio"
 	"flag"
 	"fmt"
-	"github.com/rkoesters/goblin/lib"
+	"github.com/rkoesters/goblin/lib/flagutil"
+	_ "github.com/rkoesters/goblin/lib/logutil"
 	"io"
 	"log"
 	"os"
@@ -20,9 +22,7 @@ var (
 // Usage: %name %flags file1 file2 [offset1 [offset2]]
 func main() {
 	var err error
-	lib.Usage = "file1 file2 [offset1 [offset2]]"
-	lib.InitFlag()
-	lib.InitLog()
+	flagutil.Usage = "file1 file2 [offset1 [offset2]]"
 	flag.Parse()
 
 	if flag.NArg() < 2 {
@@ -72,7 +72,7 @@ func cmp(br1, br2 io.ByteReader, f1, f2 string) {
 
 		if e1 != nil || e2 != nil {
 			if e1 == e2 {
-				break;
+				break
 			}
 			if e1 == io.EOF {
 				fmt.Printf("EOF on %v\n", f1)
@@ -80,7 +80,7 @@ func cmp(br1, br2 io.ByteReader, f1, f2 string) {
 			if e2 == io.EOF {
 				fmt.Printf("EOF on %v\n", f2)
 			}
-			break;
+			break
 		}
 
 		if b1 == '\n' {

@@ -4,6 +4,8 @@ package main
 import (
 	"flag"
 	"github.com/rkoesters/goblin/lib"
+	"github.com/rkoesters/goblin/lib/flagutil"
+	_ "github.com/rkoesters/goblin/lib/logutil"
 	"log"
 	"os"
 )
@@ -15,9 +17,7 @@ var (
 
 // Usage: %name %flags dirname...
 func main() {
-	lib.Usage = "dirname..."
-	lib.InitFlag()
-	lib.InitLog()
+	flagutil.Usage = "dirname..."
 	flag.Parse()
 
 	perm, err := lib.ParsePerm(*mode)

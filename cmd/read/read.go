@@ -5,6 +5,8 @@ import (
 	"flag"
 	"fmt"
 	"github.com/rkoesters/goblin/lib"
+	"github.com/rkoesters/goblin/lib/flagutil"
+	_ "github.com/rkoesters/goblin/lib/logutil"
 	"log"
 )
 
@@ -14,9 +16,7 @@ var (
 )
 
 func main() {
-	lib.Usage = "[file...]"
-	lib.InitLog()
-	lib.InitFlag()
+	flagutil.Usage = "[file...]"
 	flag.Parse()
 
 	paths := flag.Args()

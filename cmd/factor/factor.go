@@ -3,16 +3,15 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/rkoesters/goblin/lib"
+	"github.com/rkoesters/goblin/lib/flagutil"
+	_ "github.com/rkoesters/goblin/lib/logutil"
 	"log"
 	"math"
 	"strconv"
 )
 
 func main() {
-	lib.Usage = "[number...]"
-	lib.InitLog()
-	lib.InitFlag()
+	flagutil.Usage = "[number...]"
 	flag.Parse()
 
 	for _, i := range flag.Args() {

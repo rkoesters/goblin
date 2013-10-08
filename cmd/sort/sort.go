@@ -9,6 +9,8 @@ import (
 	"flag"
 	"fmt"
 	"github.com/rkoesters/goblin/lib"
+	"github.com/rkoesters/goblin/lib/flagutil"
+	_ "github.com/rkoesters/goblin/lib/logutil"
 	"log"
 	"sort"
 )
@@ -20,9 +22,7 @@ var (
 
 // Usage: %name %flags [file...]
 func main() {
-	lib.Usage = "[file...]"
-	lib.InitFlag()
-	lib.InitLog()
+	flagutil.Usage = "[file...]"
 	flag.Parse()
 
 	// Read in our input.

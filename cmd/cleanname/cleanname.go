@@ -3,15 +3,14 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/rkoesters/goblin/lib"
+	"github.com/rkoesters/goblin/lib/flagutil"
 	"path"
 )
 
 var pwd = flag.String("d", "", "prefix")
 
 func main() {
-	lib.Usage = "names..."
-	lib.InitFlag()
+	flagutil.Usage = "names..."
 	flag.Parse()
 
 	for _, i := range flag.Args() {

@@ -3,7 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/rkoesters/goblin/lib"
+	"github.com/rkoesters/goblin/lib/flagutil"
 	"os"
 	"path"
 	"strings"
@@ -13,8 +13,7 @@ import (
 var dflag = flag.Bool("d", false, "print directory compenent")
 
 func main() {
-	lib.Usage = "string [suffix]"
-	lib.InitFlag()
+	flagutil.Usage = "string [suffix]"
 	flag.Parse()
 
 	if flag.NArg() < 1 || flag.NArg() > 2 {

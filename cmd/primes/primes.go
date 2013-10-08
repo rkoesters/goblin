@@ -3,7 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/rkoesters/goblin/lib"
+	"github.com/rkoesters/goblin/lib/flagutil"
+	_ "github.com/rkoesters/goblin/lib/logutil"
 	"log"
 	"math"
 	"os"
@@ -11,9 +12,7 @@ import (
 )
 
 func main() {
-	lib.Usage = "start [finish]"
-	lib.InitLog()
-	lib.InitFlag()
+	flagutil.Usage = "start [finish]"
 	flag.Parse()
 
 	// Process commandline arguments.

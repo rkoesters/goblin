@@ -1,18 +1,19 @@
 package main
 
 import (
-	"github.com/rkoesters/goblin/lib"
+	"flag"
+	"github.com/rkoesters/goblin/lib/flagutil"
+	_ "github.com/rkoesters/goblin/lib/logutil"
 	"log"
 	"os"
 	"path/filepath"
 )
 
 func main() {
-	lib.Usage = "file name | file... dir"
-	lib.InitLog()
+	flagutil.Usage = "file name | file... dir"
 
 	if len(os.Args) < 3 {
-		lib.PrintUsage()
+		flag.Usage()
 		os.Exit(1)
 	}
 

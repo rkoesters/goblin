@@ -2,7 +2,8 @@ package main
 
 import (
 	"flag"
-	"github.com/rkoesters/goblin/lib"
+	"github.com/rkoesters/goblin/lib/flagutil"
+	_ "github.com/rkoesters/goblin/lib/logutil"
 	"io"
 	"log"
 	"os"
@@ -13,9 +14,7 @@ var (
 )
 
 func main() {
-	lib.Usage = "files..."
-	lib.InitFlag()
-	lib.InitLog()
+	flagutil.Usage = "files..."
 	flag.Parse()
 
 	files := openFiles(flag.Args())

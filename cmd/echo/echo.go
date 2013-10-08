@@ -6,7 +6,7 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/rkoesters/goblin/lib"
+	"github.com/rkoesters/goblin/lib/flagutil"
 	"strings"
 )
 
@@ -14,8 +14,7 @@ var noNL = flag.Bool("n", false, "suppress newline")
 
 // Usage: %name %flags [arg...]
 func main() {
-	lib.Usage = "[arg...]"
-	lib.InitFlag()
+	flagutil.Usage = "[arg...]"
 	flag.Parse()
 
 	s := strings.Join(flag.Args(), " ")

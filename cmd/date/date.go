@@ -3,7 +3,8 @@ package main
 import (
 	"flag"
 	"fmt"
-	"github.com/rkoesters/goblin/lib"
+	"github.com/rkoesters/goblin/lib/flagutil"
+	_ "github.com/rkoesters/goblin/lib/logutil"
 	"log"
 	"strconv"
 	"time"
@@ -15,9 +16,7 @@ var (
 )
 
 func main() {
-	lib.Usage = "[seconds]"
-	lib.InitLog()
-	lib.InitFlag()
+	flagutil.Usage = "[seconds]"
 	flag.Parse()
 
 	var t time.Time
