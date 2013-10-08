@@ -7,7 +7,6 @@ New Tools
 - ascii
 - bc
 - cal
-- cmp
 - dc
 - du
 - dd

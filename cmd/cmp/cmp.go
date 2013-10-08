@@ -1,8 +1,7 @@
 // Compare files.
 package main
 
-import (
-	"bufio"
+import ( "bufio"
 	"flag"
 	"fmt"
 	"github.com/rkoesters/goblin/lib"
@@ -70,27 +69,37 @@ func cmp(br1, br2 io.ByteReader, f1, f2 string) {
 		b1, e1 := br1.ReadByte()
 		b2, e2 := br2.ReadByte()
 		char++
+
+		if e1 != nil || e2 != nil {
+			if e1 == e2 {
+				break;
+			}
+			if e1 == io.EOF {
+				fmt.Printf("EOF on %v\n", f1)
+			}
+			if e2 == io.EOF {
+				fmt.Printf("EOF on %v\n", f2)
+			}
+			break;
+		}
+
 		if b1 == '\n' {
 			line++
 		}
 
 		if b1 != b2 {
-			printDiff(f1, f2, char, line)
+			printDiff(f1, f2, char, line, b1, b2)
 			status = 1
-		}
-
-		if e1 != nil || e2 != nil {
-			break
 		}
 	}
 	os.Exit(status)
 }
 
-func printDiff(f1, f2 string, char, line int64) {
+func printDiff(f1, f2 string, char, line int64, b1, b2 byte) {
 	if !*silent {
 		switch {
 		case *printEveryDiff:
-			// -l flag
+			fmt.Printf("%6v %#.2x %#.2x\n", char, b1, b2)
 			return
 		case *printLine:
 			fmt.Printf("%v %v differ: char %v line %v\n", f1, f2, char, line)
