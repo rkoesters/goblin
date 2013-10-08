@@ -9,6 +9,7 @@ import (
 	"strings"
 )
 
+// BUG(rkoesters) -d option shouldn't have trailing slash.
 var dflag = flag.Bool("d", false, "print directory compenent")
 
 func main() {
