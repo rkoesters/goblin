@@ -1,23 +1,17 @@
 bindir = bin
 mandir = man/man1
 
-all: cmds-go cmds-sh cmds-doc
+all: cmds doc
 
-cmds-go: $(bindir)
+cmds:
 	GOBIN=$(bindir) go install ./cmd/...
 
-cmds-sh: $(bindir)
-	cp sh/* $(bindir)
-
-cmds-doc: $(mandir)
+doc: $(mandir)
 	tools/mkdoc.sh
-
-$(bindir):
-	mkdir -p $(bindir)
 
 $(mandir):
 	mkdir -p $(mandir)
 
 clean:
-	rm -f $(bindir)/*
+	GOBIN=$(bindir) go clean -i ./cmd/...
 	rm -f $(mandir)/*
