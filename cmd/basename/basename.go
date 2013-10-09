@@ -5,11 +5,9 @@ import (
 	"fmt"
 	"github.com/rkoesters/goblin/lib/flagutil"
 	"os"
-	"path"
 	"strings"
 )
 
-// BUG(rkoesters) -d option shouldn't have trailing slash.
 var dflag = flag.Bool("d", false, "print directory compenent")
 
 func main() {
@@ -21,12 +19,20 @@ func main() {
 		os.Exit(1)
 	}
 
-	dir, file := path.Split(flag.Arg(0))
+	var dir, file string
+	s := flag.Arg(0)
+	n := strings.LastIndex(s, string(os.PathSeparator))
+	if n < 0 {
+		dir = "."
+		file = s
+	} else {
+		dir = s[:n]
+		file = s[n+1:]
+	}
 
 	if *dflag {
 		fmt.Println(dir)
-		return
+	} else {
+		fmt.Println(strings.TrimSuffix(file, flag.Arg(1)))
 	}
-
-	fmt.Println(strings.TrimSuffix(file, flag.Arg(1)))
 }
