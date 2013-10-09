@@ -7,7 +7,7 @@ fi
 
 mandir=${mandir:-man}
 mango=${mango:-mango-doc}
-manual=${manual:-GOBLIN}
+manual=${manual:-Goblin Commands}
 
 manpage () {
 	section="$1"
