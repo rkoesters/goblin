@@ -1,17 +1,17 @@
 bindir = bin
-mandir = man/man1
+mandir = man
 
 all: cmds doc
+clean: clean-cmds clean-doc
 
 cmds:
 	GOBIN=$(bindir) go install ./cmd/...
 
-doc: $(mandir)
-	tools/mkdoc.sh
-
-$(mandir):
-	mkdir -p $(mandir)
-
-clean:
+clean-cmds:
 	GOBIN=$(bindir) go clean -i ./cmd/...
-	rm -f $(mandir)/*
+
+doc:
+	mandir=$(mandir) tools/mkdoc.sh build
+
+clean-doc:
+	mandir=$(mandir) tools/mkdoc.sh clean
