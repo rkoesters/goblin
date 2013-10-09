@@ -1,5 +1,5 @@
 bindir = bin
-mandir = man
+mandir = man/man1
 
 all: cmds-go cmds-sh cmds-doc
 
@@ -20,4 +20,4 @@ $(mandir):
 
 clean:
 	rm -f $(bindir)/*
-	rm -f $(mandir)/*/*
+	rm -f $(mandir)/*
